@@ -1,0 +1,70 @@
+name: gate
+
+# 上游 ci.yml 只在 v0.x 分支跑；本分支是 main，因此这里为本层单独配置矩阵。
+# 目的：engines 声明的 Node 18 下限必须在 18 上真跑，且 Linux 的路径/换行语义与 Windows 不同。
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: gate (node ${{ matrix.node }} / ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        node:
+          - "18"
+          - "20"
+          - "22"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Gate tests
+        run: npm run test:gate
+
+      - name: Evidence drift check
+        run: npm run exactness:check
+
+  upstream:
+    name: upstream suite (node 22 / ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Upstream tests
+        run: npm run test:upstream
