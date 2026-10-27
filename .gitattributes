@@ -1,0 +1,10 @@
+# 统一换行，避免 Windows 上 Edit 写回 CRLF 造成"只有某个文件反复有差异"
+* text=auto eol=lf
+
+# 上游测试夹具按 GBK + CRLF 存储，必须保持字节原样（转码测试依赖它）
+test/gbkFile.txt -text
+
+# 二进制资源
+*.png binary
+*.jpg binary
+*.zip binary

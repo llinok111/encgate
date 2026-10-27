@@ -1,0 +1,271 @@
+{
+  "generatedBy": "gate/scripts/exactness.mjs",
+  "upstream": "iconv-lite v0.7.3",
+  "node": "v22.22.2",
+  "icu": "78.2",
+  "codePointsPerTarget": 16601,
+  "targets": 14,
+  "assertions": 232414,
+  "verdictMismatch": 0,
+  "byteMismatch": 0,
+  "rows": [
+    {
+      "target": "gbk",
+      "codePoints": 16601,
+      "lossy": 13579,
+      "lossyRatio": 0.818,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 3022,
+        "replaced": 13579,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 56,
+      "bytesActual": 56
+    },
+    {
+      "target": "gb18030",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 83,
+      "bytesActual": 83
+    },
+    {
+      "target": "big5",
+      "codePoints": 16601,
+      "lossy": 14234,
+      "lossyRatio": 0.8574,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 2367,
+        "replaced": 14234,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 54,
+      "bytesActual": 54
+    },
+    {
+      "target": "big5hkscs",
+      "codePoints": 16601,
+      "lossy": 14234,
+      "lossyRatio": 0.8574,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 2367,
+        "replaced": 14234,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 54,
+      "bytesActual": 54
+    },
+    {
+      "target": "shiftjis",
+      "codePoints": 16601,
+      "lossy": 15441,
+      "lossyRatio": 0.9301,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 1160,
+        "replaced": 15439,
+        "substituted": 2,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [
+        "U+00A5→\"\\\\\"",
+        "U+203E→\"~\""
+      ],
+      "stringVerified": true,
+      "bytesPredicted": 54,
+      "bytesActual": 54
+    },
+    {
+      "target": "eucjp",
+      "codePoints": 16601,
+      "lossy": 14549,
+      "lossyRatio": 0.8764,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 2052,
+        "replaced": 14547,
+        "substituted": 2,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [
+        "U+00A5→\"\\\\\"",
+        "U+203E→\"~\""
+      ],
+      "stringVerified": true,
+      "bytesPredicted": 54,
+      "bytesActual": 54
+    },
+    {
+      "target": "cp949",
+      "codePoints": 16601,
+      "lossy": 14909,
+      "lossyRatio": 0.8981,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 1692,
+        "replaced": 14909,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 59,
+      "bytesActual": 59
+    },
+    {
+      "target": "windows-1252",
+      "codePoints": 16601,
+      "lossy": 16383,
+      "lossyRatio": 0.9869,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 218,
+        "replaced": 16383,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 42,
+      "bytesActual": 42
+    },
+    {
+      "target": "ascii",
+      "codePoints": 16601,
+      "lossy": 16506,
+      "lossyRatio": 0.9943,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 95,
+        "replaced": 16506,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 42,
+      "bytesActual": 42
+    },
+    {
+      "target": "utf-8",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 92,
+      "bytesActual": 92
+    },
+    {
+      "target": "utf-16le",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 84,
+      "bytesActual": 84
+    },
+    {
+      "target": "utf-16be",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 84,
+      "bytesActual": 84
+    },
+    {
+      "target": "utf-32le",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 160,
+      "bytesActual": 160
+    },
+    {
+      "target": "utf7",
+      "codePoints": 16601,
+      "lossy": 0,
+      "lossyRatio": 0,
+      "verdictMismatch": 0,
+      "kinds": {
+        "ok": 16601,
+        "replaced": 0,
+        "substituted": 0,
+        "dropped": 0,
+        "error": 0
+      },
+      "substituted": [],
+      "stringVerified": true,
+      "bytesPredicted": 146,
+      "bytesActual": 108
+    }
+  ]
+}

@@ -1,46 +1,58 @@
 {
-    "name": "iconv-lite",
-    "description": "Convert character encodings in pure javascript.",
-    "version": "0.7.3",
+    "name": "encgate",
+    "description": "转码闸门：在转码前精确预言字符损失（逐码点、带行列），转码后复核产物；codec 层原样保留 iconv-lite。",
+    "version": "1.0.0",
     "license": "MIT",
     "keywords": [
-        "iconv",
-        "convert",
+        "encoding",
         "charset",
-        "icu"
+        "transcode",
+        "gbk",
+        "big5",
+        "shift_jis",
+        "mojibake",
+        "data-loss",
+        "verification"
     ],
     "author": "Alexander Shtuchkin <ashtuchkin@gmail.com>",
+    "contributors": [
+        "encgate contributors"
+    ],
     "main": "./lib/index.js",
     "typings": "./lib/index.d.ts",
-    "homepage": "https://github.com/pillarjs/iconv-lite",
-    "bugs": "https://github.com/pillarjs/iconv-lite/issues",
+    "bin": {
+        "encgate": "./bin/encgate.mjs"
+    },
+    "homepage": "https://github.com/llinok111/encgate",
+    "bugs": "https://github.com/llinok111/encgate/issues",
     "files": [
         "lib/",
         "encodings/",
-        "types/"
+        "types/",
+        "gate/",
+        "bin/"
     ],
-    "funding": {
-      "type": "opencollective",
-      "url": "https://opencollective.com/express"
-    },
     "repository": {
         "type": "git",
-        "url": "https://github.com/pillarjs/iconv-lite.git"
+        "url": "https://github.com/llinok111/encgate.git"
     },
     "engines": {
-        "node": ">=0.10.0"
+        "node": ">=18"
     },
     "scripts": {
         "lint": "eslint",
         "lint:fix": "eslint --fix",
-        "test": "mocha --reporter spec --check-leaks --grep .",
-        "test:ci": "nyc --exclude test --reporter=lcovonly --reporter=text npm test",
-        "test:cov": "nyc --exclude test --reporter=html --reporter=text npm test",
-        "test:performance": "node --allow-natives-syntax performance/index.js",
-        "test:tap": "mocha --reporter tap --check-leaks --grep .",
+        "test": "npm run test:upstream && npm run test:gate",
+        "test:upstream": "mocha --reporter dot --check-leaks --grep .",
+        "test:gate": "node gate/scripts/run-tests.mjs",
         "test:typescript": "tsc && attw --pack",
-        "test:webpack": "npm pack && mv iconv-lite-*.tgz test/webpack/iconv-lite.tgz && cd test/webpack && npm install && npm run test && rm iconv-lite.tgz",
-        "typegen": "node generation/gen-typings.js"
+        "test:webpack": "npm pack && mv encgate-*.tgz test/webpack/encgate.tgz && cd test/webpack && npm install && npm run test && rm encgate.tgz",
+        "typegen": "node generation/gen-typings.js",
+        "bench:detect": "node gate/scripts/bench-detect.mjs --compare-chardet",
+        "exactness": "node gate/scripts/exactness.mjs",
+        "evidence": "node gate/scripts/downstream-demo.mjs",
+        "exactness:write": "node gate/scripts/exactness.mjs --write",
+        "exactness:check": "node gate/scripts/exactness.mjs --check"
     },
     "browser": {
         "stream": false
@@ -52,12 +64,13 @@
         "@types/node": "^24.0.12",
         "async": "^3.2.0",
         "bench-node": "^0.10.0",
-        "eslint": "^9.0.0",
+        "chardet": "^2.2.0",
         "errto": "^0.2.1",
+        "eslint": "^9.0.0",
         "expect-type": "^1.2.0",
         "iconv": "^2.3.5",
         "mocha": "^6.2.2",
-        "neostandard": "^0.12.0",    
+        "neostandard": "^0.12.0",
         "nyc": "^14.1.1",
         "request": "^2.88.2",
         "semver": "^6.3.0",

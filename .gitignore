@@ -1,6 +1,6 @@
 # Node.js stuff
 node_modules
-package-lock.json
+# package-lock.json 在本仓库中提交：衍生项目需要可复现安装（见 NOTICE.md）
 
 # Editors
 *~

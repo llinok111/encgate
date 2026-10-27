@@ -17,6 +17,6 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "iconv-lite": "file:iconv-lite.tgz"
+    "encgate": "file:encgate.tgz"
   }
 }

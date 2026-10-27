@@ -1,0 +1,19 @@
+{
+  "base": "iconv-lite v0.7.3",
+  "files": {
+    "encodings\\dbcs-codec.js": "ee0cfbf10e4dc34906bf8a4aa0aaa991f8a50ac08966eaf65a31acfc5b33b8d1",
+    "encodings\\dbcs-data.js": "17f52a22ed26a2fe1cfab8164ad07152d60e6e38087e492e85ee4aec249f1f2c",
+    "encodings\\index.js": "a96a42738187fbb6eed876c843c8fd88c6d88729902159a983025d7341e50abd",
+    "encodings\\internal.js": "320313a132361c02f7f033b52eb579df8799a0e1429febf56d2c374f6c7a7ff1",
+    "encodings\\sbcs-codec.js": "d622479bee6d119d8df4d126f14acc2882213554ee46fbf27f2dc68970e315c7",
+    "encodings\\sbcs-data-generated.js": "2cf44b3f70c61c9cdd59fda7ec085bc3180809638f208c7239688ccb90a48866",
+    "encodings\\sbcs-data.js": "1e01fec80d139b957684eba698bb64a0a03fb58d9fa93514d9e810034c76213a",
+    "encodings\\utf16.js": "f1307071fdc27db4bad98cb4845279880a5c5d6f28b44ddc2ec2e2f1790227ce",
+    "encodings\\utf32.js": "2a3afdfed10342966dd55a007ddf517a03e25f00a16ec38850897e672f2a90c1",
+    "encodings\\utf7.js": "0a1ac8158e64def6a57da3bb8f158d8c1bd57f8c68eb4a232d6f101f73397fe7",
+    "lib\\bom-handling.js": "e4019126f7695139538bfdeb9f0c933948ddde1d91b2989fbef46bad65aed0d4",
+    "lib\\index.d.ts": "b24be37c56832d0352878a52ac589ac26cd461e174d6e6d67a38a0da795c8f30",
+    "lib\\index.js": "59759a24727cd37306bc039512307c8b87992568fc7a2145fcbb8a4fd404fb3c",
+    "lib\\streams.js": "8c30f663ec5d7ced629d9eaa4dc427538e89574013e0cc845bf90568dda30bcb"
+  }
+}
