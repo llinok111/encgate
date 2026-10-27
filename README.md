@@ -101,7 +101,16 @@ const out  = transcode(buffer, { to: 'gbk', force: false })  // 拒绝产出时 
 差别不在"更准"，而在**把"不知道"当成合法输出**：16 字节以下一律 `inconclusive`，让调用方转人工，
 而不是赌一个 48% 会错的答案。
 
-**3. 真实文档的下游影响**（`npm run evidence -- --dirs ..`）
+**3. 跨平台 CI（GitHub Actions，本仓库 `.github/workflows/gate.yml`）**
+
+7/7 全绿：Node **18/20/22 × ubuntu-latest / windows-latest** 六格（本层测试 + 证据漂移检查）
+＋ ubuntu 上的上游 324 passing。
+
+首轮六格全红，抓到两个本地发现不了的真缺陷（已修，见 CHANGELOG 段落 → `git log`）：
+哈希基线路径存成反斜杠导致 Linux 全判 missing；windows-latest 上上游的原生 devDependency
+`iconv` node-gyp 失败。
+
+**4. 真实文档的下游影响**（`npm run evidence -- --dirs ..`）
 
 | 项 | 数值 |
 |---|---|
@@ -162,7 +171,7 @@ gate/                 本层源码（零改动上游）
   charsets.mjs        目标字符集元数据
   frequency.mjs       汉字频次表（由真实语料生成，含生成命令）
   scripts/            证据与工具脚本（exactness / bench-detect / downstream-demo / build-freq / make-fixtures）
-  test/               57 条测试（node:test），含精确性、探测、CLI 契约、上游守卫
+  test/               59 条测试（node:test），含精确性、探测、CLI 契约、上游守卫、版本一致性
 bin/encgate.mjs       CLI（退出码契约）
 lib/ encodings/       ← 上游 codec，逐字节未改（有 sha256 守卫测试）
 docs/EVIDENCE.json    精确性证据（由脚本生成，`--check` 可验漂移）
@@ -173,8 +182,9 @@ docs/upstream-readme.md  上游原始文档
 
 ```bash
 npm install
-npm run test            # 上游 154 条 + 本层 57 条
-npm run test:upstream   # 只跑上游（基线：154 passing）
+npm run test            # 上游 324 passing / 8 pending + 本层 59 条
+npm run test:upstream   # 只跑上游（324 passing / 8 pending；注意 `npx mocha` 直接跑是 154，
+                        #  差别来自 --grep . 与 mocha 默认 spec 解析，基线口径以本脚本为准）
 npm run test:gate       # 只跑本层
 npm run exactness       # 精确性网格（打印）
 npm run exactness:write # 重新生成 docs/EVIDENCE.json
