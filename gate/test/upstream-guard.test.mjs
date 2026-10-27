@@ -20,14 +20,17 @@ const pinned = JSON.parse(fs.readFileSync(path.join(here, "..", "test", "fixture
 
 test("codec 层逐文件字节未改（基线 iconv-lite v0.7.3）", () => {
   const changed = []
+  // 基线里的键固定用 POSIX 分隔符：这份 JSON 在 Windows 上生成，
+  // 若存成反斜杠，Linux CI 上会全部读成 "missing"（第一次 CI 就是这样全红的）。
   for (const [rel, want] of Object.entries(pinned.files)) {
-    const p = path.join(root, rel)
+    const p = path.join(root, ...rel.split("/"))
     if (!fs.existsSync(p)) { changed.push({ rel, reason: "missing" }); continue }
     const got = crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex")
     if (got !== want) changed.push({ rel, reason: "modified" })
   }
   assert.deepEqual(changed, [], `codec 层被改动：${JSON.stringify(changed)}`)
   assert.ok(Object.keys(pinned.files).length >= 14, "哈希基线不完整")
+  assert.equal(pinned.pathStyle, "posix")
 })
 
 test("上游公开行为抽样保持不变", () => {

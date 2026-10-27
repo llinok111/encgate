@@ -37,8 +37,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install
-        run: npm ci --no-audit --no-fund
+      # 只装生产依赖：本层（gate/ + bin/）不依赖任何 devDependency，
+      # 而上游的 `iconv`（原生模块）在 windows-latest 上 node-gyp 必然失败。
+      # 这一步同时也在证明"本层零 devDependency"。
+      - name: Install (prod only)
+        run: npm ci --omit=dev --no-audit --no-fund
 
       - name: Gate tests
         run: npm run test:gate
