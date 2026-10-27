@@ -1,7 +1,7 @@
 {
     "name": "encgate",
     "description": "转码闸门：在转码前精确预言字符损失（逐码点、带行列），转码后复核产物；codec 层原样保留 iconv-lite。",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "keywords": [
         "encoding",

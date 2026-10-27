@@ -86,3 +86,12 @@ test("gate/ 与 bin/ 不依赖 Node 20+ 专属 API（engines 下限 18）", () =
   }
   assert.deepEqual(hits, [])
 })
+
+test("版本号三处一致（package.json / 库导出 / CLI 输出）", async () => {
+  const { spawnSync } = await import("node:child_process")
+  const { VERSION } = await import("../transcode.mjs")
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"))
+  assert.equal(VERSION, pkg.version, "库导出的 VERSION 与 package.json 不一致")
+  const cli = spawnSync(process.execPath, [path.join(root, "bin", "encgate.mjs"), "--version"], { encoding: "utf8" })
+  assert.equal(cli.stdout.trim(), pkg.version, "CLI --version 与 package.json 不一致")
+})
